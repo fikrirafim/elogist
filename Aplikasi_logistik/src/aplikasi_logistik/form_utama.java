@@ -6,7 +6,8 @@ package aplikasi_logistik;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
-    import javax.swing.*;
+    import javax.swing.JOptionPane;
+    import javax.swing.table.DefaultTableModel;
 
 public class form_utama extends javax.swing.JFrame {
     Connection con;
@@ -16,6 +17,11 @@ public class form_utama extends javax.swing.JFrame {
     
     public form_utama() {
         initComponents();
+        koneksi DB = new koneksi();
+        DB.config();
+        con = DB.con;
+        stat = DB.stm;
+        main_table.setModel(tb);
     }
 
     /**
@@ -94,7 +100,23 @@ public class form_utama extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void main_tableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_main_tableAncestorAdded
-
+        DefaultTableModel tb = new DefaultTableModel();
+        
+        try{
+            sql = "SELECT * FROM produk_m";
+            rs = stat.executeQuery(sql);
+                
+            while (rs.next()){
+                tb.addRow(new Object[]{
+                    rs.getString("id"),
+                    rs.getString("nama_produk"),
+                    rs.getString("satuan"),
+                    rs.getString("harga"),
+            });
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_main_tableAncestorAdded
 
     /**
