@@ -123,18 +123,22 @@ public class form_utama extends javax.swing.JFrame {
         tb.addColumn("Nama Produk");
         tb.addColumn("Satuan");
         tb.addColumn("Harga (Rp)");
+        tb.addColumn("qty");
+        tb.addColumn("Jumlah Harga");
         main_table.setModel(tb);
         
         try{
-            sql = "SELECT * FROM produk_m";
+            sql = "select pm.id, pm.nama_produk,pm.harga,pm.satuan,st.qty, pm.harga * st.qty as jumlahHarga from stokproduk_t st left join produk_m pm on pm.id = st.produkfk";
             rs = stat.executeQuery(sql);
 
             while (rs.next()){
                 tb.addRow(new Object[]{
-                    rs.getString("id"),
-                    rs.getString("nama_produk"),
-                    rs.getString("satuan"),
-                    rs.getString("harga"),
+                    rs.getString("pm.id"),
+                    rs.getString("pm.nama_produk"),
+                    rs.getString("pm.satuan"),
+                    rs.getString("pm.harga"),
+                    rs.getString("st.qty"),
+                    rs.getString("jumlahHarga"),
                 });
             }
         }catch(Exception e){
