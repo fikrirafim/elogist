@@ -147,7 +147,7 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_loginbuttonActionPerformed
-
+// textfield username
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         password.requestFocusInWindow();
     }//GEN-LAST:event_usernameActionPerformed
