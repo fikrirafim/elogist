@@ -21,7 +21,7 @@ public class form_utama extends javax.swing.JFrame {
         DB.config();
         con = DB.con;
         stat = DB.stm;
-        main_table.setModel(tb);
+        
     }
 
     /**
@@ -101,18 +101,23 @@ public class form_utama extends javax.swing.JFrame {
 
     private void main_tableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_main_tableAncestorAdded
         DefaultTableModel tb = new DefaultTableModel();
+        tb.addColumn("ID Produk");
+        tb.addColumn("Nama Produk");
+        tb.addColumn("Satuan");
+        tb.addColumn("Harga (Rp)");
+        main_table.setModel(tb);
         
         try{
             sql = "SELECT * FROM produk_m";
             rs = stat.executeQuery(sql);
-                
+
             while (rs.next()){
                 tb.addRow(new Object[]{
                     rs.getString("id"),
                     rs.getString("nama_produk"),
                     rs.getString("satuan"),
                     rs.getString("harga"),
-            });
+                });
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
