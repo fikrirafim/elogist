@@ -95,6 +95,7 @@ public class login extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\GIVA\\Downloads\\log.png")); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 255, 0));
         jLabel6.setText("Sign in to continue");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
