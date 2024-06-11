@@ -17,10 +17,10 @@ public class login extends javax.swing.JFrame {
     
     public login() {
         initComponents();
-        koneksi DB = new koneksi();
-        DB.config();
-        con = DB.con;
-        stat = DB.stm;
+        koneksi DB = new koneksi(); // Membuat instance koneksi
+        DB.config(); // Mengkonfigurasi koneksi
+        con = DB.con; // Mendapatkan objek Connection dari koneksi
+        stat = DB.stm; // Mendapatkan objek statement dari koneksi
     }
 
     /**
@@ -133,14 +133,15 @@ public class login extends javax.swing.JFrame {
 
     private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
         try{
+            // Query SQL untuk mengecek username dan password
             sql = "SELECT * FROM loginuser_m WHERE username ='"+username.getText()+"'AND password ='"+password.getText()+"'";
-            rs = stat.executeQuery(sql);
+            rs = stat.executeQuery(sql); // Eksekusi query
             if(rs.next()){
                 if(username.getText().equals(rs.getString("username")) && password.getText().equals(rs.getString("password"))){
                     //JOptionPane.showMessageDialog(null, "Login Sukses");
                     new form_utama().setVisible(true);
                 } else{
-                    JOptionPane.showMessageDialog(null, "username atau password salah");
+                    JOptionPane.showMessageDialog(null, "username atau password salah"); // Jika tidak sesuai, tampilkan pesan kesalahan
                 }
             }
         } catch(Exception e){
@@ -151,7 +152,7 @@ public class login extends javax.swing.JFrame {
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         password.requestFocusInWindow();
     }//GEN-LAST:event_usernameActionPerformed
-
+// textfield password
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         loginbutton.requestFocusInWindow();
     }//GEN-LAST:event_passwordActionPerformed
