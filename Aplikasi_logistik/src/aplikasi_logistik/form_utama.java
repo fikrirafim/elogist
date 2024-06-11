@@ -12,15 +12,15 @@ package aplikasi_logistik;
 public class form_utama extends javax.swing.JFrame {
     Connection con;
     Statement stat;
-    ResultSet rs;
-    String sql;
+    ResultSet rs; // Pendeklarasian variable rs tipe string
+    String sql; // Pendeklarasian variable sql tipe string
     
     public form_utama() {
         initComponents();
-        koneksi DB = new koneksi();
-        DB.config();
-        con = DB.con;
-        stat = DB.stm;
+        koneksi DB = new koneksi(); // Membuat instance koneksi
+        DB.config(); // Mengonfigurasi koneksi
+        con = DB.con; // Mendapatkan objek Connection dari koneksi
+        stat = DB.stm; // Mendapatkan objek Statement dari koneksi
         
     }
 
@@ -98,7 +98,7 @@ public class form_utama extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+// Menampilkan tabel
     private void main_tableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_main_tableAncestorAdded
         DefaultTableModel tb = new DefaultTableModel();
         tb.addColumn("ID Produk");
