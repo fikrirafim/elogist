@@ -147,7 +147,7 @@ public class login extends javax.swing.JFrame {
             rs = stat.executeQuery(sql); // Eksekusi query
             if(rs.next()){
                 if(username.getText().equals(rs.getString("username")) && password.getText().equals(rs.getString("password"))){
-                    //JOptionPane.showMessageDialog(null, "Login Sukses");
+                    //Navigasi ke form_utama
                     new form_utama().setVisible(true);
                 } else{
                     JOptionPane.showMessageDialog(null, "username atau password salah"); // Jika tidak sesuai, tampilkan pesan kesalahan
