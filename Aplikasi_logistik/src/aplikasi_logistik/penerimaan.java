@@ -3,18 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package aplikasi_logistik;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
 
-/**
- *
- * @author GIVA
- */
 public class penerimaan extends javax.swing.JFrame {
-
-    /**
-     * Creates new form penerimaan
-     */
+    Connection con;
+    Statement stat;
+    ResultSet rs;
+    String sql;
+    
     public penerimaan() {
         initComponents();
+        koneksi DB = new koneksi(); // Membuat instance koneksi
+        DB.config(); // Mengkonfigurasi koneksi
+        con = DB.con; // Mendapatkan objek Connection dari koneksi
+        stat = DB.stm; // Mendapatkan objek statement dari koneksi
     }
 
     /**
@@ -27,15 +34,15 @@ public class penerimaan extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBproduk = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        TFqty = new javax.swing.JTextField();
+        TFharga = new javax.swing.JTextField();
+        TFjumlah_harga = new javax.swing.JTextField();
+        Btambah = new javax.swing.JButton();
+        Bhapus = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
@@ -50,8 +57,13 @@ public class penerimaan extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setForeground(new java.awt.Color(204, 255, 204));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk", "Item 2", "Item 3", "Item 4" }));
+        CBproduk.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CBproduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk" }));
+        CBproduk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBprodukActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("QTY");
@@ -62,14 +74,37 @@ public class penerimaan extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Jumlah Harga");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Tambah");
-
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Hapus");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        TFqty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                TFqtyActionPerformed(evt);
+            }
+        });
+
+        TFharga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFhargaActionPerformed(evt);
+            }
+        });
+
+        TFjumlah_harga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFjumlah_hargaActionPerformed(evt);
+            }
+        });
+
+        Btambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Btambah.setText("Tambah");
+        Btambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtambahActionPerformed(evt);
+            }
+        });
+
+        Bhapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Bhapus.setText("Hapus");
+        Bhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BhapusActionPerformed(evt);
             }
         });
 
@@ -101,18 +136,18 @@ public class penerimaan extends javax.swing.JFrame {
                                 .addGap(88, 88, 88)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TFqty, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(TFjumlah_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(Btambah)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton2))))
+                                        .addComponent(Bhapus))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CBproduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(53, 53, 53)
                                 .addComponent(jLabel1)
                                 .addGap(115, 115, 115)
@@ -133,19 +168,19 @@ public class penerimaan extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBproduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFjumlah_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(Bhapus)
+                    .addComponent(Btambah))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -181,9 +216,47 @@ public class penerimaan extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BhapusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BhapusActionPerformed
+
+    private void TFqtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFqtyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFqtyActionPerformed
+
+    private void TFhargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFhargaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFhargaActionPerformed
+
+    private void TFjumlah_hargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFjumlah_hargaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFjumlah_hargaActionPerformed
+
+    private void BtambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtambahActionPerformed
+        try{
+        sql = "INSERT INTO ...";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, TFqty.getText());
+        pst.setString(2, TFharga.getText());
+        pst.setString(3, TFjumlah_harga.getText());
+        
+        }catch(Exception e){
+        }
+    }//GEN-LAST:event_BtambahActionPerformed
+
+    private void CBprodukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBprodukActionPerformed
+        try{
+            sql = "SELECT nama_produk FROM produk_m";
+            stat = con.createStatement();
+            rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                CBproduk.addItem(rs.getString(1));
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_CBprodukActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,10 +294,13 @@ public class penerimaan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Bhapus;
+    private javax.swing.JButton Btambah;
+    private javax.swing.JComboBox<String> CBproduk;
+    private javax.swing.JTextField TFharga;
+    private javax.swing.JTextField TFjumlah_harga;
+    private javax.swing.JTextField TFqty;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -236,8 +312,5 @@ public class penerimaan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

@@ -267,7 +267,27 @@ public class master_Produk extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void populateTable(){
+        DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
+        tb.setRowCount(0);
+        
+        try{
+            sql = "SELECT * FROM produk_m";
+            rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                tb.addRow(new Object[]{
+                    rs.getString("id"),
+                    rs.getString("nama_produk"),
+                    rs.getString("satuan"),
+                    rs.getString("harga")
+                });
+            }
+            rs.close();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
     private void BsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsimpanActionPerformed
         try{
             sql = "INSERT INTO produk_m (id, nama_produk, satuan, harga) VALUES (?,?,?,?)";
@@ -280,6 +300,14 @@ public class master_Produk extends javax.swing.JFrame {
             
             if(affectedRows>0){
                 JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+                
+                DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
+                tb.addRow(new Object[]{
+                    TFid.getText(),
+                    TFnama_produk.getText(),
+                    TFsatuan.getText(),
+                    TFharga.getText()
+                });
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -294,39 +322,32 @@ public class master_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_BclearActionPerformed
 
     private void table_produkAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produkAncestorAdded
-        DefaultTableModel tb = new DefaultTableModel();
-        tb.addColumn("ID");
-        tb.addColumn("Nama Produk");
-        tb.addColumn("Satuan");
-        tb.addColumn("Harga");
-        table_produk.setModel(tb);
-        
-        try{
-            sql = "SELECT * FROM produk_m";
-            rs = stat.executeQuery(sql);
-            
-            while (rs.next()){
-                tb.addRow(new Object[]{
-                    rs.getString("id"),
-                    rs.getString("nama_produk"),
-                    rs.getString("satuan"),
-                    rs.getString("harga")
-                });
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+        populateTable();
     }//GEN-LAST:event_table_produkAncestorAdded
 
     private void BeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeditActionPerformed
         try{
             stat = con.createStatement();
             sql = "UPDATE produk_m SET nama_produk = '"+TFnama_produk.getText()+"',satuan = '"+TFsatuan.getText()+"',harga = '"+TFharga.getText()+"'";
-            stat.executeUpdate(sql);
-            stat.close();
-            con.close();
-            JOptionPane.showMessageDialog(null, "Data berhasil dirubah");
-
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, TFnama_produk.getText());
+            pst.setString(1, TFsatuan.getText());
+            pst.setString(1, TFharga.getText());
+            int affectedRows = pst.executeUpdate(sql);
+            
+            if(affectedRows>0){
+                JOptionPane.showMessageDialog(null, "Data berhasil di edit");
+                DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
+                
+                for (int i = 0; i < tb.getRowCount(); i++){
+                    if (tb.getValueAt(i,0).equals(TFid.getText())){
+                        tb.setValueAt(TFnama_produk.getText(), i, 1);
+                        tb.setValueAt(TFsatuan.getText(), i, 2);
+                        tb.setValueAt(TFharga.getText(), i, 3);
+                    }
+                }
+            }
+            
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
