@@ -328,14 +328,15 @@ public class master_Produk extends javax.swing.JFrame {
     private void BeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeditActionPerformed
         try{
             stat = con.createStatement();
-            sql = "UPDATE produk_m SET nama_produk = '"+TFnama_produk.getText()+"',satuan = '"+TFsatuan.getText()+"',harga = '"+TFharga.getText()+"'";
+            sql = "UPDATE produk_m SET nama_produk = ?, satuan = ?, harga = ? WHERE id = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, TFnama_produk.getText());
-            pst.setString(1, TFsatuan.getText());
-            pst.setString(1, TFharga.getText());
+            pst.setString(1, TFid.getText());
+            pst.setString(2, TFnama_produk.getText());
+            pst.setString(3, TFsatuan.getText());
+            pst.setString(4, TFharga.getText());
             int affectedRows = pst.executeUpdate(sql);
             
-            if(affectedRows>0){
+            if(affectedRows>=0){
                 JOptionPane.showMessageDialog(null, "Data berhasil di edit");
                 DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
                 
@@ -346,6 +347,8 @@ public class master_Produk extends javax.swing.JFrame {
                         tb.setValueAt(TFharga.getText(), i, 3);
                     }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Data gagal ditambahkan");
             }
             
         } catch(Exception e){
