@@ -328,12 +328,16 @@ public class master_Produk extends javax.swing.JFrame {
     private void BeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeditActionPerformed
         try{
             stat = con.createStatement();
-            sql = "UPDATE produk_m SET nama_produk = ?, satuan = ?, harga = ? WHERE id = ?";
+            sql = "UPDATE produk_m SET id = '"+TFid.getText()+"',nama_produk = '"+TFnama_produk.getText()+"',satuan = '"+TFsatuan.getText()+"',harga = '"+TFharga.getText()+"' WHERE id = '"+TFid.getText()+"'";
+//                    + "nama_produk = ?, "
+//                    + "satuan = ?, "
+//                    + "harga = ?, "
+//                    + "WHERE id = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, TFid.getText());
-            pst.setString(2, TFnama_produk.getText());
-            pst.setString(3, TFsatuan.getText());
-            pst.setString(4, TFharga.getText());
+//            pst.setString(1, TFid.getText());
+//            pst.setString(2, TFnama_produk.getText());
+//            pst.setString(3, TFsatuan.getText());
+//            pst.setString(4, TFharga.getText());
             int affectedRows = pst.executeUpdate(sql);
             
             if(affectedRows>=0){
