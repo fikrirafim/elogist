@@ -44,10 +44,11 @@ public class master_Produk extends javax.swing.JFrame {
         TFsatuan = new javax.swing.JTextField();
         TFharga = new javax.swing.JTextField();
         Bsimpan = new javax.swing.JButton();
-        Bclear = new javax.swing.JButton();
+        Bhapus = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         TFid = new javax.swing.JTextField();
         Bedit = new javax.swing.JButton();
+        Bclear = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_produk = new javax.swing.JTable();
@@ -93,10 +94,10 @@ public class master_Produk extends javax.swing.JFrame {
             }
         });
 
-        Bclear.setText("Hapus");
-        Bclear.addActionListener(new java.awt.event.ActionListener() {
+        Bhapus.setText("Hapus");
+        Bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BclearActionPerformed(evt);
+                BhapusActionPerformed(evt);
             }
         });
 
@@ -109,11 +110,18 @@ public class master_Produk extends javax.swing.JFrame {
             }
         });
 
+        Bclear.setText("Clear");
+        Bclear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BclearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -122,17 +130,22 @@ public class master_Produk extends javax.swing.JFrame {
                         .addComponent(jLabel8))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TFnama_produk, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(TFsatuan)
-                    .addComponent(TFharga)
-                    .addComponent(TFid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Bsimpan)
-                    .addComponent(Bclear)
-                    .addComponent(Bedit))
-                .addGap(47, 47, 47))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Bclear)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TFnama_produk, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(TFsatuan)
+                            .addComponent(TFharga)
+                            .addComponent(TFid))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Bsimpan)
+                            .addComponent(Bhapus)
+                            .addComponent(Bedit))
+                        .addGap(47, 47, 47))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +157,7 @@ public class master_Produk extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Bedit)
                         .addGap(18, 18, 18)
-                        .addComponent(Bclear))
+                        .addComponent(Bhapus))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -162,7 +175,9 @@ public class master_Produk extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Bclear)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
@@ -314,12 +329,16 @@ public class master_Produk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BsimpanActionPerformed
 
-    private void BclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BclearActionPerformed
-        TFid.setText("");
-        TFnama_produk.setText("");
-        TFsatuan.setText("");
-        TFharga.setText("");
-    }//GEN-LAST:event_BclearActionPerformed
+    private void BhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BhapusActionPerformed
+        try{
+            stat = con.createStatement();
+            sql = "DELETE FROM produk_m WHERE id = '"+TFid.getText()+"'";
+            stat.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }populateTable();
+    }//GEN-LAST:event_BhapusActionPerformed
 
     private void table_produkAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produkAncestorAdded
         populateTable();
@@ -383,6 +402,13 @@ public class master_Produk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_table_produkMouseClicked
 
+    private void BclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BclearActionPerformed
+        TFid.setText("");
+        TFnama_produk.setText("");
+        TFsatuan.setText("");
+        TFharga.setText("");
+    }//GEN-LAST:event_BclearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -421,6 +447,7 @@ public class master_Produk extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bclear;
     private javax.swing.JButton Bedit;
+    private javax.swing.JButton Bhapus;
     private javax.swing.JButton Bsimpan;
     private javax.swing.JTextField TFharga;
     private javax.swing.JTextField TFid;
