@@ -389,12 +389,12 @@ public class master_Produk extends javax.swing.JFrame {
             
             if (rs.next()){
                 String id = rs.getString("id");
-                TFid.setText(id);
                 String nama_produk = rs.getString("nama_produk");
-                TFnama_produk.setText(nama_produk);
                 String satuan = rs.getString("satuan");
-                TFsatuan.setText(satuan);
                 String harga = rs.getString("harga");
+                TFid.setText(id);
+                TFnama_produk.setText(nama_produk);
+                TFsatuan.setText(satuan);
                 TFharga.setText(harga);
             }
         }catch(Exception e){
