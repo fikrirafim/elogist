@@ -86,6 +86,7 @@ public class penerimaan extends javax.swing.JFrame {
             }
         });
 
+        TFjumlah_harga.setEditable(false);
         TFjumlah_harga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFjumlah_hargaActionPerformed(evt);

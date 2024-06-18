@@ -33,8 +33,6 @@ public class form_utama extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        main_table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -42,28 +40,6 @@ public class form_utama extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        main_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "No", "Nama Barang", "Satuan", "Jumlah", "Harga Satuan", "Total Harga", "Jumlah", "Harga Satuan", "Total Harga", "Jumlah", "Harga Satuan", "Total Harga", "Jumlah", "Harga Satuan", "Total Harga"
-            }
-        ));
-        main_table.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                main_tableAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        jScrollPane1.setViewportView(main_table);
 
         jMenu3.setText("E-logist");
         jMenuBar1.add(jMenu3);
@@ -83,50 +59,15 @@ public class form_utama extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 498, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+            .addGap(0, 419, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-// Menampilkan tabel
-    private void main_tableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_main_tableAncestorAdded
-        DefaultTableModel tb = new DefaultTableModel();
-        tb.addColumn("ID Produk");
-        tb.addColumn("Nama Produk");
-        tb.addColumn("Satuan");
-        tb.addColumn("Harga (Rp)");
-        tb.addColumn("qty");
-        tb.addColumn("Jumlah Harga");
-        main_table.setModel(tb);
-        
-        try{
-            sql = "select pm.id, pm.nama_produk,pm.harga,pm.satuan,st.qty, pm.harga * st.qty as jumlahHarga from stokproduk_t st left join produk_m pm on pm.id = st.produkfk";
-            rs = stat.executeQuery(sql);
-
-            while (rs.next()){
-                tb.addRow(new Object[]{
-                    rs.getString("pm.id"),
-                    rs.getString("pm.nama_produk"),
-                    rs.getString("pm.satuan"),
-                    rs.getString("pm.harga"),
-                    rs.getString("st.qty"),
-                    rs.getString("jumlahHarga"),
-                });
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-    }//GEN-LAST:event_main_tableAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -169,7 +110,5 @@ public class form_utama extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable main_table;
     // End of variables declaration//GEN-END:variables
 }

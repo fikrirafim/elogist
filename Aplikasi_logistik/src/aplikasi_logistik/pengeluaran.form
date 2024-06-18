@@ -98,8 +98,8 @@
                                           <Component id="TFqty" min="-2" pref="120" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="TFharga" min="-2" pref="112" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="TFjumlah_harga" pref="97" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                          <Component id="TFjumlah_harga" pref="103" max="32767" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="TFgudang_tujuan" min="-2" pref="109" max="-2" attributes="0"/>
                                       </Group>
@@ -137,7 +137,7 @@
                       <Component id="TFqty" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TFharga" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TFgudang_tujuan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TFjumlah_harga" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="TFjumlah_harga" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -292,13 +292,6 @@
             <Property name="text" type="java.lang.String" value="Simpan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="TFjumlah_harga">
-          <Properties>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JComboBox" name="CBproduk">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -315,6 +308,11 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="TFjumlah_harga">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

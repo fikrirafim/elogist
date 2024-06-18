@@ -49,8 +49,8 @@ public class pengeluaran extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_pengeluaran = new javax.swing.JTable();
         Bsimpan = new javax.swing.JButton();
-        TFjumlah_harga = new javax.swing.JButton();
         CBproduk = new javax.swing.JComboBox<>();
+        TFjumlah_harga = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -119,8 +119,6 @@ public class pengeluaran extends javax.swing.JFrame {
         Bsimpan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Bsimpan.setText("Simpan");
 
-        TFjumlah_harga.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
         CBproduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk" }));
         CBproduk.setToolTipText("");
         CBproduk.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -137,6 +135,8 @@ public class pengeluaran extends javax.swing.JFrame {
                 CBprodukActionPerformed(evt);
             }
         });
+
+        TFjumlah_harga.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,8 +168,8 @@ public class pengeluaran extends javax.swing.JFrame {
                                         .addComponent(TFqty, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(TFjumlah_harga, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(TFjumlah_harga, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
                                         .addComponent(TFgudang_tujuan, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(64, 64, 64))
@@ -196,7 +196,7 @@ public class pengeluaran extends javax.swing.JFrame {
                     .addComponent(TFqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TFgudang_tujuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TFjumlah_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFjumlah_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btambah)
@@ -351,7 +351,7 @@ public class pengeluaran extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CBproduk;
     private javax.swing.JTextField TFgudang_tujuan;
     private javax.swing.JTextField TFharga;
-    private javax.swing.JButton TFjumlah_harga;
+    private javax.swing.JTextField TFjumlah_harga;
     private javax.swing.JTextField TFqty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
