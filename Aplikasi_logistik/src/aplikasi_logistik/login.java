@@ -86,8 +86,8 @@ public class login extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 255, 0));
-        jLabel6.setText("Sign in to continue");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/persediaan (2) (1).png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 200, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/log.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
