@@ -12,8 +12,8 @@ public class login extends javax.swing.JFrame {
 
     Connection con;
     Statement stat;
-    ResultSet rs;
-    String sql;
+    ResultSet rs; // Pendeklarasian variable rs tipe string
+    String sql; // Pendeklarasian variable sql tipe string
     
     public login() {
         initComponents();
@@ -111,7 +111,7 @@ public class login extends javax.swing.JFrame {
             // Query SQL untuk mengecek username dan password
             sql = "SELECT * FROM loginuser_m WHERE username ='"+username.getText()+"'AND password ='"+password.getText()+"'";
             rs = stat.executeQuery(sql); // Eksekusi query
-            if(rs.next()){
+            if(rs.next()){  // Untuk memeriksa apakah hasil query SQL mengembalikan setidaknya satu baris hasil
                 if(username.getText().equals(rs.getString("username")) && password.getText().equals(rs.getString("password"))){
                     //Navigasi ke form_utama
                     new form_utama().setVisible(true);

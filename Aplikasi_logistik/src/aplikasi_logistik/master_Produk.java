@@ -3,20 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package aplikasi_logistik;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
+import java.sql.Connection; // Digunakan untuk membuat koneksi ke database
+import java.sql.ResultSet; // Digunakan untuk menyimpan hasil eksekusi query SQL
+import java.sql.Statement; // Digunakan untuk menjalankan query SQL
+import java.sql.PreparedStatement; // Digunakan untuk menjalankan query SQL dengan parameter yang bisa di ganti
+import javax.swing.table.DefaultTableModel; // Digunakan untuk memodelkan data tabel dalam GUI
+import javax.swing.*; // Paket untuk elemen-elemen GUI
 
-public class master_Produk extends javax.swing.JFrame {
-    Connection con;
-    Statement stat;
-    ResultSet rs;
-    String sql;
+public class master_Produk extends javax.swing.JFrame { // Kelas utama yang mengelola tampilan dan logika untuk manajemen produk
+    Connection con; // Objek koneksi ke database
+    Statement stat; // Objek untuk menjalankan perintah SQL
+    ResultSet rs; // Menyimpan hasil query SQL
+    String sql; // Menyimpan perintah SQL
     
-    public master_Produk() {
+    public master_Produk() { // Konstruktor yang menginisialisasi komponen GUI dan koneksi ke database
     initComponents();
         koneksi DB = new koneksi(); // Membuat instance koneksi
         DB.config(); // Mengkonfigurasi koneksi
@@ -283,14 +283,14 @@ public class master_Produk extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void populateTable(){
-        DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
+        DefaultTableModel tb = (DefaultTableModel) table_produk.getModel(); // Untuk menambahkan kolom-kolom ke dalam tabel
         tb.setRowCount(0);
         
         try{
-            sql = "SELECT * FROM produk_m";
-            rs = stat.executeQuery(sql);
+            sql = "SELECT * FROM produk_m"; // Untuk mengambil semua data dari tabel 'produk'
+            rs = stat.executeQuery(sql); // Untuk mneyimpan hasilnya dalam 'Resultset'
             
-            while(rs.next()){
+            while(rs.next()){ // Untuk mengintegrasi melalui hasil dari query yang dieksekusi pada sebuah database
                 tb.addRow(new Object[]{
                     rs.getString("id"),
                     rs.getString("nama_produk"),
@@ -304,6 +304,7 @@ public class master_Produk extends javax.swing.JFrame {
         }
     }
     private void BsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsimpanActionPerformed
+        // Implementasi Fungsi simpan (Menyimpan data produk ke database)
         try{
             sql = "INSERT INTO produk_m (id, nama_produk, satuan, harga) VALUES (?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
@@ -313,7 +314,7 @@ public class master_Produk extends javax.swing.JFrame {
             pst.setString(4, TFharga.getText());
             int affectedRows = pst.executeUpdate();
             
-            if(affectedRows>0){
+            if(affectedRows>0){ // Untuk mengecek apakah operasi SQL (seperti 'Insert','Update',atau 'Delete') mempengsatu atau lebih baris dalam database
                 JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
                 
                 DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
@@ -330,6 +331,7 @@ public class master_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_BsimpanActionPerformed
 
     private void BhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BhapusActionPerformed
+        // Implementasi Fungsi hapus (Menghapus data produk dari database)
         try{
             stat = con.createStatement();
             sql = "DELETE FROM produk_m WHERE id = '"+TFid.getText()+"'";
@@ -341,10 +343,11 @@ public class master_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_BhapusActionPerformed
 
     private void table_produkAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produkAncestorAdded
-        populateTable();
+        populateTable(); // Mengisi tabel produk ketika komponen ditambahkan ke GUI
     }//GEN-LAST:event_table_produkAncestorAdded
 
     private void BeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeditActionPerformed
+        // Implementasi Fungsi edit / update (Mengedit / Mengupdate data produk di database)
         try{
             stat = con.createStatement();
             sql = "UPDATE produk_m SET id = '"+TFid.getText()+"',nama_produk = '"+TFnama_produk.getText()+"',satuan = '"+TFsatuan.getText()+"',harga = '"+TFharga.getText()+"' WHERE id = '"+TFid.getText()+"'";
@@ -359,7 +362,7 @@ public class master_Produk extends javax.swing.JFrame {
 //            pst.setString(4, TFharga.getText());
             int affectedRows = pst.executeUpdate(sql);
             
-            if(affectedRows>=0){
+            if(affectedRows>=0){ // Untuk mengecek apakah operasi SQL (seperti 'Insert','Update',atau 'Delete') mempengsatu atau lebih baris dalam database
                 JOptionPane.showMessageDialog(null, "Data berhasil di edit");
                 DefaultTableModel tb = (DefaultTableModel) table_produk.getModel();
                 
@@ -380,6 +383,8 @@ public class master_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_BeditActionPerformed
 
     private void table_produkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_produkMouseClicked
+        // Mengisi field input dengan data dari baris yang dipilih di tabel
+        // Perlu menambahkan fungsi navigasi
         try{
             int row = table_produk.getSelectedRow();
             String table_klik = (table_produk.getModel().getValueAt(row, 0).toString());
@@ -387,7 +392,7 @@ public class master_Produk extends javax.swing.JFrame {
             sql = "SELECT * FROM produk_m WHERE id = '"+table_klik+"'";
             rs = stat.executeQuery(sql);
             
-            if (rs.next()){
+            if (rs.next()){ // Untuk menyimpan dan mengelola hasil dari eksekusi pernyataan SQL
                 String id = rs.getString("id");
                 String nama_produk = rs.getString("nama_produk");
                 String satuan = rs.getString("satuan");
@@ -403,6 +408,7 @@ public class master_Produk extends javax.swing.JFrame {
     }//GEN-LAST:event_table_produkMouseClicked
 
     private void BclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BclearActionPerformed
+        // Implementasi Fungsi clear (Mengosongkan field input)
         TFid.setText("");
         TFnama_produk.setText("");
         TFsatuan.setText("");
