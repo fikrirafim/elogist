@@ -12,8 +12,8 @@ public class login extends javax.swing.JFrame {
 
     Connection con;
     Statement stat;
-    ResultSet rs;
-    String sql;
+    ResultSet rs; // Pendeklarasian variable rs tipe string
+    String sql; // Pendeklarasian variable sql tipe string
     
     public login() {
         initComponents();
@@ -40,7 +40,6 @@ public class login extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -52,18 +51,18 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, -1, -1));
 
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 196, -1));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 196, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
         loginbutton.setBackground(new java.awt.Color(204, 255, 204));
         loginbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -74,29 +73,26 @@ public class login extends javax.swing.JFrame {
                 loginbuttonActionPerformed(evt);
             }
         });
-        getContentPane().add(loginbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+        getContentPane().add(loginbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
 
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 196, -1));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 196, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 255, 0));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/persediaan (2) (1).png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 200, 30));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/log.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 200, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/logo.png"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/bg.png"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 380));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 370));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,7 +107,7 @@ public class login extends javax.swing.JFrame {
             // Query SQL untuk mengecek username dan password
             sql = "SELECT * FROM loginuser_m WHERE username ='"+username.getText()+"'AND password ='"+password.getText()+"'";
             rs = stat.executeQuery(sql); // Eksekusi query
-            if(rs.next()){
+            if(rs.next()){  // Untuk memeriksa apakah hasil query SQL mengembalikan setidaknya satu baris hasil
                 if(username.getText().equals(rs.getString("username")) && password.getText().equals(rs.getString("password"))){
                     //Navigasi ke form_utama
                     new form_utama().setVisible(true);
@@ -174,7 +170,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginbutton;
