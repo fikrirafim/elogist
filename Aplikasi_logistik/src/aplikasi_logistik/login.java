@@ -39,7 +39,6 @@ public class login extends javax.swing.JFrame {
         loginbutton = new javax.swing.JButton();
         password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -83,15 +82,10 @@ public class login extends javax.swing.JFrame {
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 196, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 255, 0));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/persediaan (2) (1).png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 200, 30));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/logo.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/logo.png"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/bg.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/bg.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 370));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,7 +162,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

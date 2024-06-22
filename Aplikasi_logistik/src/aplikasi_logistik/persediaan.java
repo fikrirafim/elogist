@@ -43,15 +43,24 @@ public class persediaan extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nama", "Satuan", "Harga"
+                "ID", "Nama", "Satuan", "Harga", "Qty", "Jumlah Harga"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/persediaan.png"))); // NOI18N
