@@ -3,18 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package aplikasi_logistik;
+import java.sql.Connection; // Digunakan untuk membuat koneksi ke database
+import java.sql.ResultSet; // Digunakan untuk menyimpan hasil eksekusi query SQL
+import java.sql.Statement; // Digunakan untuk menjalankan query SQL
+import java.sql.PreparedStatement; // Digunakan untuk menjalankan query SQL dengan parameter yang bisa di ganti
+import javax.swing.table.DefaultTableModel; // Digunakan untuk memodelkan data tabel dalam GUI
+import javax.swing.*; // Paket untuk elemen-elemen GUI
 
-/**
- *
- * @author GIVA
- */
 public class persediaan extends javax.swing.JFrame {
-
-    /**
-     * Creates new form persediaan
-     */
+    Connection con; // Objek koneksi ke database
+    Statement stat; // Objek untuk menjalankan perintah SQL
+    ResultSet rs; // Menyimpan hasil query SQL
+    String sql; // Menyimpan perintah SQL
     public persediaan() {
         initComponents();
+        koneksi DB = new koneksi(); // Membuat instance koneksi
+        DB.config(); // Mengkonfigurasi koneksi
+        con = DB.con; // Mendapatkan objek Connection dari koneksi
+        stat = DB.stm; // Mendapatkan objek statement dari koneksi
     }
 
     /**
@@ -28,8 +34,7 @@ public class persediaan extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        tabel_persediaan = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -41,7 +46,7 @@ public class persediaan extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabel_persediaan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -60,33 +65,33 @@ public class persediaan extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/persediaan.png"))); // NOI18N
+        tabel_persediaan.setShowGrid(true);
+        tabel_persediaan.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tabel_persediaanAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(tabel_persediaan);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel2)))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 380));
@@ -95,18 +100,77 @@ public class persediaan extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Persediaan");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Penerimaan");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Pengeluaran");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void populateTable(){
+        DefaultTableModel tb = new DefaultTableModel();
+        tb.addColumn("ID");
+        tb.addColumn("NAMA PRODUK");
+        tb.addColumn("SATUAN");
+        tb.addColumn("HARGA");
+        tb.addColumn("QTY");
+        tb.addColumn("JUMLAH HARGA");
+        tabel_persediaan.setModel(tb);
+        
+        try{
+            sql = "SELECT * FROM produk_m";
+            rs = stat.executeQuery(sql);
+            
+            while(rs.next()){
+                tb.addRow(new Object[]{
+                    rs.getString("id"),
+                    rs.getString("nama_produk"),
+                    rs.getString("satuan"),
+                    rs.getString("harga"),
+//                    rs.getString("qty"),
+//                    rs.getString("jumlah_harga")
+                });
+            }
+            rs.close();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+    private void tabel_persediaanAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tabel_persediaanAncestorAdded
+        populateTable();
+    }//GEN-LAST:event_tabel_persediaanAncestorAdded
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        new persediaan().setVisible(true);
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        new penerimaan().setVisible(true);
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        new pengiriman().setVisible(true);
+    }//GEN-LAST:event_jMenu4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +208,6 @@ public class persediaan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -152,6 +215,6 @@ public class persediaan extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabel_persediaan;
     // End of variables declaration//GEN-END:variables
 }
