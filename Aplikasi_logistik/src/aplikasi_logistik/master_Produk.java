@@ -59,8 +59,7 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jMenu6 = new javax.swing.JMenu();
 
         jInternalFrame1.setVisible(true);
 
@@ -238,10 +237,10 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(159, 159, 159))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,23 +301,8 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Pengeluaran");
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
-            }
-        });
-
-        jRadioButtonMenuItem3.setSelected(true);
-        jRadioButtonMenuItem3.setText("Pengiriman");
-        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jRadioButtonMenuItem3);
-
-        jMenuBar1.add(jMenu5);
+        jMenu6.setText("Pengiriman");
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -470,9 +454,6 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
     }//GEN-LAST:event_jMenu4ActionPerformed
 
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-    }//GEN-LAST:event_jMenu5ActionPerformed
-
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         new persediaan().setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
@@ -480,10 +461,6 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
         new penerimaan().setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
-
-    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
-        new pengiriman().setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -539,14 +516,13 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_produk;
     // End of variables declaration//GEN-END:variables
