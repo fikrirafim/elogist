@@ -39,7 +39,9 @@ public class persediaan extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,6 +115,16 @@ public class persediaan extends javax.swing.JFrame {
                 jMenu3ActionPerformed(evt);
             }
         });
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Penerimaan");
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Pengeluaran");
@@ -121,6 +133,16 @@ public class persediaan extends javax.swing.JFrame {
                 jMenu4ActionPerformed(evt);
             }
         });
+
+        jRadioButtonMenuItem2.setSelected(true);
+        jRadioButtonMenuItem2.setText("Pengiriman");
+        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jRadioButtonMenuItem2);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -138,17 +160,17 @@ public class persediaan extends javax.swing.JFrame {
         tabel_persediaan.setModel(tb);
         
         try{
-            sql = "SELECT * FROM produk_m";
+            sql = "SELECT pm.id, pm.nama_produk, pm.satuan, pm.harga, st.qty, pm.harga * st.qty as jumlah FROM stokproduk_t st left join produk_m pm on pm.id = st.produkfk ";
             rs = stat.executeQuery(sql);
             
             while(rs.next()){
                 tb.addRow(new Object[]{
-                    rs.getString("id"),
-                    rs.getString("nama_produk"),
-                    rs.getString("satuan"),
-                    rs.getString("harga"),
-//                    rs.getString("qty"),
-//                    rs.getString("jumlah_harga")
+                    rs.getString("pm.id"),
+                    rs.getString("pm.nama_produk"),
+                    rs.getString("pm.satuan"),
+                    rs.getString("pm.harga"),
+                    rs.getString("st.qty"),
+                    rs.getString("jumlah")
                 });
             }
             rs.close();
@@ -165,12 +187,19 @@ public class persediaan extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        new penerimaan().setVisible(true);
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-        new pengiriman().setVisible(true);
+//        new pengiriman().setVisible(true);
     }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        new penerimaan().setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        new pengiriman().setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,6 +243,8 @@ public class persediaan extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabel_persediaan;
     // End of variables declaration//GEN-END:variables

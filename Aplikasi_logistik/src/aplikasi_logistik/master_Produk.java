@@ -56,8 +56,11 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
 
         jInternalFrame1.setVisible(true);
 
@@ -269,6 +272,16 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
                 jMenu3ActionPerformed(evt);
             }
         });
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Persediaan");
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Penerimaan");
@@ -277,6 +290,16 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
                 jMenu4ActionPerformed(evt);
             }
         });
+
+        jRadioButtonMenuItem2.setSelected(true);
+        jRadioButtonMenuItem2.setText("Penerimaan");
+        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jRadioButtonMenuItem2);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Pengeluaran");
@@ -285,6 +308,16 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
                 jMenu5ActionPerformed(evt);
             }
         });
+
+        jRadioButtonMenuItem3.setSelected(true);
+        jRadioButtonMenuItem3.setText("Pengiriman");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jRadioButtonMenuItem3);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -371,15 +404,7 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
         try{
             stat = con.createStatement();
             sql = "UPDATE produk_m SET id = '"+TFid.getText()+"',nama_produk = '"+TFnama_produk.getText()+"',satuan = '"+TFsatuan.getText()+"',harga = '"+TFharga.getText()+"' WHERE id = '"+TFid.getText()+"'";
-//                    + "nama_produk = ?, "
-//                    + "satuan = ?, "
-//                    + "harga = ?, "
-//                    + "WHERE id = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-//            pst.setString(1, TFid.getText());
-//            pst.setString(2, TFnama_produk.getText());
-//            pst.setString(3, TFsatuan.getText());
-//            pst.setString(4, TFharga.getText());
             int affectedRows = pst.executeUpdate(sql);
             
             if(affectedRows>=0){ // Untuk mengecek apakah operasi SQL (seperti 'Insert','Update',atau 'Delete') mempengsatu atau lebih baris dalam database
@@ -440,16 +465,25 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        new persediaan().setVisible(true);
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-        new penerimaan().setVisible(true);
     }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-        new pengiriman().setVisible(true);
     }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        new persediaan().setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        new penerimaan().setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+        new pengiriman().setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,6 +544,9 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_produk;
     // End of variables declaration//GEN-END:variables
