@@ -39,7 +39,9 @@ public class persediaan extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -88,21 +90,18 @@ public class persediaan extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(jLabel1)))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -113,6 +112,16 @@ public class persediaan extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu5.setText("Master");
+
+        jRadioButtonMenuItem3.setSelected(true);
+        jRadioButtonMenuItem3.setText("Master Produk");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jRadioButtonMenuItem3);
+
         jMenuBar1.add(jMenu5);
 
         jMenu2.setText("Persediaan");
@@ -121,6 +130,16 @@ public class persediaan extends javax.swing.JFrame {
                 jMenu2ActionPerformed(evt);
             }
         });
+
+        jRadioButtonMenuItem4.setSelected(true);
+        jRadioButtonMenuItem4.setText("Persediaan");
+        jRadioButtonMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jRadioButtonMenuItem4);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Penerimaan");
@@ -197,7 +216,6 @@ public class persediaan extends javax.swing.JFrame {
     }//GEN-LAST:event_tabel_persediaanAncestorAdded
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        new persediaan().setVisible(true);
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
@@ -209,11 +227,23 @@ public class persediaan extends javax.swing.JFrame {
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         new penerimaan().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
         new pengiriman().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+        new master_Produk().setVisible(true);
+//        dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
+        new persediaan().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,6 +291,8 @@ public class persediaan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabel_persediaan;
     // End of variables declaration//GEN-END:variables

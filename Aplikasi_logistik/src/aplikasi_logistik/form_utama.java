@@ -61,9 +61,9 @@ public class form_utama extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/bg.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 370));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 370));
 
         jMenu3.setText("E-logist");
         jMenuBar1.add(jMenu3);
@@ -156,22 +156,27 @@ public class form_utama extends javax.swing.JFrame {
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         new master_Produk().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         new persediaan().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
         new penerimaan().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
         new pengiriman().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
     private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
         new master_Produk().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
     /**

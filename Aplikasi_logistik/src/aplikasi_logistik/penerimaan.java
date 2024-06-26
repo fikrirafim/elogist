@@ -44,14 +44,17 @@ public class penerimaan extends javax.swing.JFrame {
         TFtanggal = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,9 +99,6 @@ public class penerimaan extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/1.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic penerimaan.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
 
@@ -106,15 +106,55 @@ public class penerimaan extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Master");
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Master Produk");
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jRadioButtonMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Persediaan");
+
+        jRadioButtonMenuItem2.setSelected(true);
+        jRadioButtonMenuItem2.setText("Persediaan");
+        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem2);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Penerimaan");
+
+        jRadioButtonMenuItem3.setSelected(true);
+        jRadioButtonMenuItem3.setText("Penerimaan");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jRadioButtonMenuItem3);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Pengiriman");
+
+        jRadioButtonMenuItem4.setSelected(true);
+        jRadioButtonMenuItem4.setText("Pengiriman");
+        jRadioButtonMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jRadioButtonMenuItem4);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -165,6 +205,27 @@ public class penerimaan extends javax.swing.JFrame {
 
     }//GEN-LAST:event_TFqtyActionPerformed
 
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        new master_Produk().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        new persediaan().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+        new penerimaan().setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
+        new pengiriman().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,7 +273,6 @@ public class penerimaan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -220,5 +280,9 @@ public class penerimaan extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
