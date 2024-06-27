@@ -193,7 +193,11 @@ public class persediaan extends javax.swing.JFrame {
         tabel_persediaan.setModel(tb);
         
         try{
-            sql = "SELECT pm.id, pm.nama_produk, pm.satuan, pm.harga, st.qty, pm.harga * st.qty as jumlah FROM stokproduk_t st left join produk_m pm on pm.id = st.produkfk ";
+            sql = """
+                  select pm.id, pm.nama_produk , pm.satuan ,pm.harga , 
+                  sum(st.qty) as jumlah ,sum(st.qty)*pm.harga as jumlahHarga from stokproduk_t st 
+                  left join produk_m pm ON pm.id = st.produkfk 
+                  group by pm.id""";
             rs = stat.executeQuery(sql);
             
             while(rs.next()){
@@ -202,8 +206,8 @@ public class persediaan extends javax.swing.JFrame {
                     rs.getString("pm.nama_produk"),
                     rs.getString("pm.satuan"),
                     rs.getString("pm.harga"),
-                    rs.getString("st.qty"),
-                    rs.getString("jumlah")
+                    rs.getString("jumlah"),
+                    rs.getString("jumlahHarga")
                 });
             }
             rs.close();

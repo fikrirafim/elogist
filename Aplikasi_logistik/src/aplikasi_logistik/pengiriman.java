@@ -178,7 +178,7 @@ public class pengiriman extends javax.swing.JFrame {
         int qty = Integer.parseInt(TFqty.getText());
         int result = qty * -1;
         try{
-            sql = "INSERT INTO strukpengeluaraan_t (nostrukpengeluaran, produkfk, qty, tanggal_pengiriman, tujuan) VALUE(?,?,?,?,?)";
+            sql = "INSERT INTO stokproduk_t (norec, produkfk, qty, tanggaltransaksi, tujuan) VALUE(?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             
             pst.setString(1, TFnopengiriman.getText());
