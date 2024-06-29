@@ -70,7 +70,7 @@ public class penerimaan extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_produk = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        TFIDProduk = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -175,7 +175,7 @@ public class penerimaan extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 590, 120));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 200, -1));
+        jPanel1.add(TFIDProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 200, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -259,7 +259,7 @@ public class penerimaan extends javax.swing.JFrame {
         try{
             sql = "INSERT INTO stokproduk_t (norec, produkfk, qty) VALUE ("
                     +TFnopenerimaan.getText()+","
-                    +CBproduk.get+","
+                    +TFIDProduk.getText()+","
                     +TFqty.getText()+")";
             PreparedStatement pst = con.prepareStatement(sql);
 
@@ -350,6 +350,7 @@ public class penerimaan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bclear;
     private javax.swing.JButton Bsimpan;
+    private javax.swing.JTextField TFIDProduk;
     private javax.swing.JTextField TFnopenerimaan;
     private javax.swing.JTextField TFqty;
     private javax.swing.JTextField TFtanggal;
@@ -371,7 +372,6 @@ public class penerimaan extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTable table_produk;
     // End of variables declaration//GEN-END:variables
