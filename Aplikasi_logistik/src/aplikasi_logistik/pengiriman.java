@@ -23,6 +23,28 @@ public class pengiriman extends javax.swing.JFrame {
         con = DB.con; // Mendapatkan objek Connection dari koneksi
         stat = DB.stm; // Mendapatkan objek statement dari koneksi
     }
+    
+    private void populateTable(){
+        DefaultTableModel tb = (DefaultTableModel) table_produk1.getModel(); // Untuk menambahkan kolom-kolom ke dalam tabel
+        tb.setRowCount(0);
+        
+        try{
+            sql = "SELECT * FROM produk_m"; // Untuk mengambil semua data dari tabel 'produk'
+            rs = stat.executeQuery(sql); // Untuk mneyimpan hasilnya dalam 'Resultset'
+            
+            while(rs.next()){ // Untuk mengintegrasi melalui hasil dari query yang dieksekusi pada sebuah database
+                tb.addRow(new Object[]{
+                    rs.getString("id"),
+                    rs.getString("nama_produk"),
+                    rs.getString("satuan"),
+                    rs.getString("harga")
+                });
+            }
+            rs.close();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +69,9 @@ public class pengiriman extends javax.swing.JFrame {
         Bkirim = new javax.swing.JButton();
         Bclear = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_produk1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -102,6 +127,49 @@ public class pengiriman extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        table_produk1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nama Produk", "Satuan", "Harga"
+            }
+        ));
+        table_produk1.setName(""); // NOI18N
+        table_produk1.setShowGrid(true);
+        table_produk1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                table_produk1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(table_produk1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 750, 130));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -164,11 +232,15 @@ public class pengiriman extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -226,6 +298,10 @@ public class pengiriman extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
+    private void table_produk1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produk1AncestorAdded
+        populateTable();
+    }//GEN-LAST:event_table_produk1AncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -282,9 +358,12 @@ public class pengiriman extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable table_produk1;
     // End of variables declaration//GEN-END:variables
 }

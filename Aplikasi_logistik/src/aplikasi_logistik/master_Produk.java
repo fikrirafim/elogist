@@ -91,6 +91,12 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
 
         jLabel9.setText("Harga");
 
+        TFnama_produk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFnama_produkActionPerformed(evt);
+            }
+        });
+
         Bsimpan.setText("Simpan");
         Bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +112,12 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
         });
 
         jLabel2.setText("ID");
+
+        TFid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFidActionPerformed(evt);
+            }
+        });
 
         Bedit.setText("Edit");
         Bedit.addActionListener(new java.awt.event.ActionListener() {
@@ -494,6 +506,14 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
         new pengiriman().setVisible(true);
         dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void TFnama_produkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFnama_produkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFnama_produkActionPerformed
+
+    private void TFidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFidActionPerformed
 
     /**
      * @param args the command line arguments

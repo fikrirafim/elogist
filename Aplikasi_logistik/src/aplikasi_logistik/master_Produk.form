@@ -290,6 +290,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TFnama_produk">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TFnama_produkActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="TFsatuan">
             </Component>
@@ -317,6 +320,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TFid">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TFidActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Bedit">
               <Properties>

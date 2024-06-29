@@ -23,6 +23,28 @@ public class penerimaan extends javax.swing.JFrame {
         con = DB.con; // Mendapatkan objek Connection dari koneksi
         stat = DB.stm; // Mendapatkan objek statement dari koneksi
     }
+    
+    private void populateTable(){
+        DefaultTableModel tb = (DefaultTableModel) table_produk.getModel(); // Untuk menambahkan kolom-kolom ke dalam tabel
+        tb.setRowCount(0);
+        
+        try{
+            sql = "SELECT * FROM produk_m"; // Untuk mengambil semua data dari tabel 'produk'
+            rs = stat.executeQuery(sql); // Untuk mneyimpan hasilnya dalam 'Resultset'
+            
+            while(rs.next()){ // Untuk mengintegrasi melalui hasil dari query yang dieksekusi pada sebuah database
+                tb.addRow(new Object[]{
+                    rs.getString("id"),
+                    rs.getString("nama_produk"),
+                    rs.getString("satuan"),
+                    rs.getString("harga")
+                });
+            }
+            rs.close();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,6 +55,7 @@ public class penerimaan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -43,7 +66,11 @@ public class penerimaan extends javax.swing.JFrame {
         Bsimpan = new javax.swing.JButton();
         Bclear = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        CBproduk = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_produk = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -55,20 +82,22 @@ public class penerimaan extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
 
+        jToolBar1.setRollover(true);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("No. Penerimaan");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 99, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 99, -1));
 
         jLabel3.setText("QTY");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 37, -1));
 
         jLabel4.setText("Tanggal Penerimaan");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 120, -1));
-        jPanel1.add(TFnopenerimaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 200, -1));
+        jPanel1.add(TFnopenerimaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 200, -1));
 
         TFqty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,19 +124,58 @@ public class penerimaan extends javax.swing.JFrame {
         jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic penerimaan.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
-        CBproduk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Produk" }));
-        CBproduk.addAncestorListener(new javax.swing.event.AncestorListener() {
+        jLabel2.setText("Produk");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        table_produk.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Barang", "Satuan", "Harga"
+            }
+        ));
+        table_produk.setShowGrid(true);
+        table_produk.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                CBprodukAncestorAdded(evt);
+                table_produkAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jPanel1.add(CBproduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        table_produk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_produkMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table_produk);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 590, 120));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 200, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -174,7 +242,7 @@ public class penerimaan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, Short.MAX_VALUE)
         );
 
         pack();
@@ -191,7 +259,7 @@ public class penerimaan extends javax.swing.JFrame {
         try{
             sql = "INSERT INTO stokproduk_t (norec, produkfk, qty) VALUE ("
                     +TFnopenerimaan.getText()+","
-                    +CBproduk.getSelectedItem()+","
+                    +CBproduk.get+","
                     +TFqty.getText()+")";
             PreparedStatement pst = con.prepareStatement(sql);
 
@@ -236,19 +304,13 @@ public class penerimaan extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
-    private void CBprodukAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_CBprodukAncestorAdded
-        try{
-            sql = "SELECT id FROM produk_m";
-            stat = con.createStatement();
-            rs = stat.executeQuery(sql);
-            
-            while(rs.next()){
-                CBproduk.addItem(rs.getString("id"));
-            }
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-    }//GEN-LAST:event_CBprodukAncestorAdded
+    private void table_produkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_produkMouseClicked
+      
+    }//GEN-LAST:event_table_produkMouseClicked
+
+    private void table_produkAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produkAncestorAdded
+        populateTable();
+    }//GEN-LAST:event_table_produkAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -288,11 +350,11 @@ public class penerimaan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bclear;
     private javax.swing.JButton Bsimpan;
-    private javax.swing.JComboBox<String> CBproduk;
     private javax.swing.JTextField TFnopenerimaan;
     private javax.swing.JTextField TFqty;
     private javax.swing.JTextField TFtanggal;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -303,9 +365,14 @@ public class penerimaan extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable table_produk;
     // End of variables declaration//GEN-END:variables
 }
