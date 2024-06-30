@@ -97,14 +97,23 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
             }
         });
 
+        Bsimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/diskette.png"))); // NOI18N
         Bsimpan.setText("Simpan");
+        Bsimpan.setIconTextGap(12);
+        Bsimpan.setMargin(new java.awt.Insets(2, 10, 3, 10));
+        Bsimpan.setMaximumSize(new java.awt.Dimension(60, 27));
+        Bsimpan.setMinimumSize(new java.awt.Dimension(60, 27));
         Bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BsimpanActionPerformed(evt);
             }
         });
 
+        Bhapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/delete.png"))); // NOI18N
         Bhapus.setText("Hapus");
+        Bhapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Bhapus.setIconTextGap(10);
+        Bhapus.setMargin(new java.awt.Insets(2, 10, 3, 10));
         Bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BhapusActionPerformed(evt);
@@ -119,14 +128,25 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
             }
         });
 
+        Bedit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/editing.png"))); // NOI18N
         Bedit.setText("Edit");
+        Bedit.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        Bedit.setIconTextGap(12);
+        Bedit.setMargin(new java.awt.Insets(2, 10, 3, 10));
+        Bedit.setMaximumSize(new java.awt.Dimension(60, 32));
+        Bedit.setMinimumSize(new java.awt.Dimension(60, 32));
+        Bedit.setPreferredSize(new java.awt.Dimension(60, 32));
         Bedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BeditActionPerformed(evt);
             }
         });
 
+        Bclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/broom.png"))); // NOI18N
         Bclear.setText("Clear");
+        Bclear.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Bclear.setIconTextGap(7);
+        Bclear.setMargin(new java.awt.Insets(2, 10, 3, 10));
         Bclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BclearActionPerformed(evt);
@@ -157,25 +177,18 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
                             .addComponent(TFharga)
                             .addComponent(TFid))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Bsimpan)
-                            .addComponent(Bhapus)
-                            .addComponent(Bedit))
-                        .addGap(47, 47, 47))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Bsimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Bedit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Bhapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(75, 75, 75))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Bsimpan)
-                        .addGap(18, 18, 18)
-                        .addComponent(Bedit)
-                        .addGap(18, 18, 18)
-                        .addComponent(Bhapus))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -190,11 +203,20 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Bclear)
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addComponent(TFharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Bclear)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Bedit, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Bhapus)
+                        .addGap(65, 65, 65))))
         );
+
+        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
 
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -229,8 +251,8 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
         jPanel3Layout.setVerticalGroup(
@@ -238,7 +260,7 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -247,25 +269,24 @@ public class master_Produk extends javax.swing.JFrame { // Kelas utama yang meng
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(181, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(159, 159, 159))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         jMenu1.setText("E-Logist");

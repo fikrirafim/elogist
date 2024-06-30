@@ -72,6 +72,7 @@ public class pengiriman extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_produk1 = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -103,6 +104,12 @@ public class pengiriman extends javax.swing.JFrame {
         jLabel5.setText("Tujuan");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 82, -1));
         jPanel1.add(TFnopengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 204, -1));
+
+        TFidproduk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFidprodukActionPerformed(evt);
+            }
+        });
         jPanel1.add(TFidproduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 204, -1));
 
         TFqty.addActionListener(new java.awt.event.ActionListener() {
@@ -114,29 +121,42 @@ public class pengiriman extends javax.swing.JFrame {
         jPanel1.add(TFtanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 205, -1));
         jPanel1.add(TFtujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 205, -1));
 
+        Bkirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/send.png"))); // NOI18N
         Bkirim.setText("Kirim");
+        Bkirim.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Bkirim.setIconTextGap(10);
         Bkirim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BkirimActionPerformed(evt);
             }
         });
-        jPanel1.add(Bkirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
+        jPanel1.add(Bkirim, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, -1, 30));
 
+        Bclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/broom.png"))); // NOI18N
         Bclear.setText("Clear");
-        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
+        Bclear.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Bclear.setIconTextGap(10);
+        Bclear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BclearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 90, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
+
         table_produk1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nama Produk", "Satuan", "Harga"
+                "No Pengiriman", "ID Produk", "QTY", "Tanggal Pengiriman", "Tujuan"
             }
         ));
         table_produk1.setName(""); // NOI18N
@@ -162,9 +182,9 @@ public class pengiriman extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +194,10 @@ public class pengiriman extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 750, 130));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 730, 130));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/pengiriman2.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -237,15 +260,11 @@ public class pengiriman extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
 
         pack();
@@ -324,6 +343,19 @@ public class pengiriman extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_table_produk1MouseClicked
 
+    private void BclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BclearActionPerformed
+        // TODO add your handling code here:
+        TFnopengiriman.setText("");
+        TFidproduk.setText("");
+        TFqty.setText("");
+        TFtanggal.setText("");
+        TFtujuan.setText("");
+    }//GEN-LAST:event_BclearActionPerformed
+
+    private void TFidprodukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFidprodukActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TFidprodukActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,6 +404,7 @@ public class pengiriman extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

@@ -63,10 +63,13 @@ public class login extends javax.swing.JFrame {
         jLabel3.setText("Password");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
-        loginbutton.setBackground(new java.awt.Color(204, 255, 204));
         loginbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         loginbutton.setForeground(new java.awt.Color(51, 51, 51));
+        loginbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/enter.png"))); // NOI18N
         loginbutton.setText("Login");
+        loginbutton.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        loginbutton.setIconTextGap(9);
+        loginbutton.setMargin(new java.awt.Insets(2, 9, 3, 9));
         loginbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbuttonActionPerformed(evt);

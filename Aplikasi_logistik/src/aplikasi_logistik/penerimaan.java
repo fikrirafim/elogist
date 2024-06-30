@@ -71,6 +71,7 @@ public class penerimaan extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         table_produk = new javax.swing.JTable();
         TFidproduk = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -107,27 +108,35 @@ public class penerimaan extends javax.swing.JFrame {
         jPanel1.add(TFqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 200, -1));
         jPanel1.add(TFtanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 200, -1));
 
+        Bsimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/diskette.png"))); // NOI18N
         Bsimpan.setText("Simpan");
+        Bsimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Bsimpan.setIconTextGap(10);
         Bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BsimpanActionPerformed(evt);
             }
         });
-        jPanel1.add(Bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+        jPanel1.add(Bsimpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
+        Bclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/broom.png"))); // NOI18N
         Bclear.setText("Clear");
+        Bclear.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Bclear.setIconTextGap(7);
         Bclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BclearActionPerformed(evt);
             }
         });
-        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 90, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic penerimaan.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
 
         jLabel2.setText("Produk");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,7 +146,7 @@ public class penerimaan extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id", "Barang", "Satuan", "Harga"
+                "No Penerimaan", "Produk", "QTY", "Tanggal Penerimaan"
             }
         ));
         table_produk.setShowGrid(true);
@@ -161,21 +170,24 @@ public class penerimaan extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 590, 120));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 590, 120));
         jPanel1.add(TFidproduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 200, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/penerimaan.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -242,7 +254,7 @@ public class penerimaan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
         );
 
         pack();
@@ -311,11 +323,11 @@ public class penerimaan extends javax.swing.JFrame {
             stat = con.createStatement();
             sql = "SELECT * FROM produk_m WHERE id = '"+table_klik+"'";
             rs = stat.executeQuery(sql);
-        
+
             if(rs.next()){
                 String id = rs.getString("id");
                 TFidproduk.setText(id);
-        }
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -372,6 +384,7 @@ public class penerimaan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
