@@ -70,7 +70,7 @@ public class penerimaan extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_produk = new javax.swing.JTable();
-        TFIDProduk = new javax.swing.JTextField();
+        TFidproduk = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -175,7 +175,7 @@ public class penerimaan extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 590, 120));
-        jPanel1.add(TFIDProduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 200, -1));
+        jPanel1.add(TFidproduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 200, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -259,7 +259,7 @@ public class penerimaan extends javax.swing.JFrame {
         try{
             sql = "INSERT INTO stokproduk_t (norec, produkfk, qty) VALUE ("
                     +TFnopenerimaan.getText()+","
-                    +TFIDProduk.getText()+","
+                    +TFidproduk.getText()+","
                     +TFqty.getText()+")";
             PreparedStatement pst = con.prepareStatement(sql);
 
@@ -305,7 +305,20 @@ public class penerimaan extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
     private void table_produkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_produkMouseClicked
-      
+        try{
+            int row  = table_produk.getSelectedRow();
+            String table_klik = table_produk.getModel().getValueAt(row, 0).toString();
+            stat = con.createStatement();
+            sql = "SELECT * FROM produk_m WHERE id = '"+table_klik+"'";
+            rs = stat.executeQuery(sql);
+        
+            if(rs.next()){
+                String id = rs.getString("id");
+                TFidproduk.setText(id);
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_table_produkMouseClicked
 
     private void table_produkAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produkAncestorAdded
@@ -350,7 +363,7 @@ public class penerimaan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bclear;
     private javax.swing.JButton Bsimpan;
-    private javax.swing.JTextField TFIDProduk;
+    private javax.swing.JTextField TFidproduk;
     private javax.swing.JTextField TFnopenerimaan;
     private javax.swing.JTextField TFqty;
     private javax.swing.JTextField TFtanggal;

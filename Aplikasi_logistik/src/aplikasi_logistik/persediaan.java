@@ -195,7 +195,7 @@ public class persediaan extends javax.swing.JFrame {
         try{
             sql = """
                   select pm.id, pm.nama_produk , pm.satuan ,pm.harga , 
-                  sum(st.qty) as jumlah ,sum(st.qty)*pm.harga as jumlahHarga from stokproduk_t st 
+                  sum(st.qty) as jumlah ,sum(st.qty)*pm.harga as jumlahHarga from stokproduk_m st 
                   left join produk_m pm ON pm.id = st.produkfk 
                   group by pm.id""";
             rs = stat.executeQuery(sql);

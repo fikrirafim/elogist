@@ -150,6 +150,11 @@ public class pengiriman extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        table_produk1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_produk1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_produk1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -301,6 +306,23 @@ public class pengiriman extends javax.swing.JFrame {
     private void table_produk1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_table_produk1AncestorAdded
         populateTable();
     }//GEN-LAST:event_table_produk1AncestorAdded
+
+    private void table_produk1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_produk1MouseClicked
+        try{
+            int row  = table_produk1.getSelectedRow();
+            String table_klik = table_produk1.getModel().getValueAt(row, 0).toString();
+            stat = con.createStatement();
+            sql = "SELECT * FROM produk_m WHERE id = '"+table_klik+"'";
+            rs = stat.executeQuery(sql);
+        
+            if(rs.next()){
+                String id = rs.getString("id");
+                TFidproduk.setText(id);
+        }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_table_produk1MouseClicked
 
     /**
      * @param args the command line arguments
