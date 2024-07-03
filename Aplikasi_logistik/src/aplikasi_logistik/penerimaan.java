@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package aplikasi_logistik;
+    import java.time.LocalDate;
+    import java.time.format.DateTimeFormatter;
     import java.sql.Connection; // Digunakan untuk membuat koneksi ke database
     import java.sql.ResultSet; // Digunakan untuk menyimpan hasil eksekusi query SQL
     import java.sql.Statement; // Digunakan untuk menjalankan query SQL
@@ -72,6 +74,7 @@ public class penerimaan extends javax.swing.JFrame {
         table_produk = new javax.swing.JTable();
         TFidproduk = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        Bisitanggal = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -188,6 +191,14 @@ public class penerimaan extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/penerimaan.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
+
+        Bisitanggal.setText("Isi Tanggal Sekarang");
+        Bisitanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BisitanggalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Bisitanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -337,6 +348,14 @@ public class penerimaan extends javax.swing.JFrame {
         populateTable();
     }//GEN-LAST:event_table_produkAncestorAdded
 
+    private void BisitanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BisitanggalActionPerformed
+        LocalDate fungsiTanggal = LocalDate.now();
+        DateTimeFormatter formatTanggal = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        
+        String tanggal = fungsiTanggal.format(formatTanggal);
+        Bisitanggal.setText(tanggal);
+    }//GEN-LAST:event_BisitanggalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -374,6 +393,7 @@ public class penerimaan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bclear;
+    private javax.swing.JButton Bisitanggal;
     private javax.swing.JButton Bsimpan;
     private javax.swing.JTextField TFidproduk;
     private javax.swing.JTextField TFnopenerimaan;

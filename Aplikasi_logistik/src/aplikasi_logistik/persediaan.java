@@ -187,12 +187,12 @@ public class persediaan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void populateTable(){
         DefaultTableModel tb = new DefaultTableModel();
-        tb.addColumn("ID");
-        tb.addColumn("NAMA PRODUK");
-        tb.addColumn("SATUAN");
-        tb.addColumn("HARGA");
-        tb.addColumn("QTY");
-        tb.addColumn("JUMLAH HARGA");
+        tb.addColumn("Id");
+        tb.addColumn("NamaProduk");
+        tb.addColumn("Satuan");
+        tb.addColumn("Harga");
+        tb.addColumn("Qty");
+        tb.addColumn("Jumlah Harga");
         tabel_persediaan.setModel(tb);
         
         try{

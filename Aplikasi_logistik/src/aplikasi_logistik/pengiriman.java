@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package aplikasi_logistik;
+    import java.time.LocalDate;
+    import java.time.format.DateTimeFormatter;
     import java.sql.Connection; // Digunakan untuk membuat koneksi ke database
     import java.sql.ResultSet; // Digunakan untuk menyimpan hasil eksekusi query SQL
     import java.sql.Statement; // Digunakan untuk menjalankan query SQL
@@ -64,7 +66,6 @@ public class pengiriman extends javax.swing.JFrame {
         TFnopengiriman = new javax.swing.JTextField();
         TFidproduk = new javax.swing.JTextField();
         TFqty = new javax.swing.JTextField();
-        TFtanggal = new javax.swing.JTextField();
         TFtujuan = new javax.swing.JTextField();
         Bkirim = new javax.swing.JButton();
         Bclear = new javax.swing.JButton();
@@ -73,6 +74,8 @@ public class pengiriman extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table_produk1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        TFtanggal = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -118,7 +121,6 @@ public class pengiriman extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TFqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 204, -1));
-        jPanel1.add(TFtanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 205, -1));
         jPanel1.add(TFtujuan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 205, -1));
 
         Bkirim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/send.png"))); // NOI18N
@@ -150,13 +152,13 @@ public class pengiriman extends javax.swing.JFrame {
 
         table_produk1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "No Pengiriman", "ID Produk", "QTY", "Tanggal Pengiriman", "Tujuan"
+                "ID Produk", "Nama Produk", "Harga", "Satuan"
             }
         ));
         table_produk1.setName(""); // NOI18N
@@ -198,6 +200,22 @@ public class pengiriman extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/pengiriman2.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+
+        TFtanggal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        TFtanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFtanggalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TFtanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 200, -1));
+
+        jButton1.setText("Tanggal Sekarang");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, -1, -1));
 
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
@@ -260,7 +278,9 @@ public class pengiriman extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,6 +376,17 @@ public class pengiriman extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFidprodukActionPerformed
 
+    private void TFtanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFtanggalActionPerformed
+    }//GEN-LAST:event_TFtanggalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        LocalDate functanggal = LocalDate.now();
+        DateTimeFormatter formatt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        
+        String tanggal = functanggal.format(formatt);
+        TFtanggal.setText(tanggal);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,8 +428,9 @@ public class pengiriman extends javax.swing.JFrame {
     private javax.swing.JTextField TFidproduk;
     private javax.swing.JTextField TFnopengiriman;
     private javax.swing.JTextField TFqty;
-    private javax.swing.JTextField TFtanggal;
+    private javax.swing.JFormattedTextField TFtanggal;
     private javax.swing.JTextField TFtujuan;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
