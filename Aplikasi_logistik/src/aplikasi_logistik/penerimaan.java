@@ -353,7 +353,7 @@ public class penerimaan extends javax.swing.JFrame {
         DateTimeFormatter formatTanggal = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         
         String tanggal = fungsiTanggal.format(formatTanggal);
-        Bisitanggal.setText(tanggal);
+        TFtanggal.setText(tanggal);
     }//GEN-LAST:event_BisitanggalActionPerformed
 
     /**
