@@ -98,8 +98,8 @@ public class pengiriman extends javax.swing.JFrame {
         jLabel2.setText("ID Produk");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 83, -1));
 
-        jLabel3.setText("QTY");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 37, -1));
+        jLabel3.setText("Quantity");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 60, -1));
 
         jLabel4.setText("Tanggal Pengiriman");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
@@ -152,13 +152,13 @@ public class pengiriman extends javax.swing.JFrame {
 
         table_produk1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID Produk", "Nama Produk", "Harga", "Satuan"
+                "No Pengiriman", "ID Produk", "Quantity", "Tanggal Pengiriman", "Tujuan"
             }
         ));
         table_produk1.setName(""); // NOI18N
@@ -220,6 +220,7 @@ public class pengiriman extends javax.swing.JFrame {
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/M.Master.png"))); // NOI18N
         jMenu2.setText("Master");
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -233,6 +234,7 @@ public class pengiriman extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/M.persediaan.png"))); // NOI18N
         jMenu3.setText("Persediaan");
 
         jRadioButtonMenuItem2.setSelected(true);
@@ -246,6 +248,7 @@ public class pengiriman extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/penerimaanlog.png"))); // NOI18N
         jMenu4.setText("Penerimaan");
 
         jRadioButtonMenuItem3.setSelected(true);
@@ -259,6 +262,7 @@ public class pengiriman extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/pengirimanlog.png"))); // NOI18N
         jMenu5.setText("Pengiriman");
 
         jRadioButtonMenuItem4.setSelected(true);
@@ -284,7 +288,7 @@ public class pengiriman extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
         );
 
         pack();

@@ -96,8 +96,8 @@ public class penerimaan extends javax.swing.JFrame {
         jLabel1.setText("No. Penerimaan");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 99, -1));
 
-        jLabel3.setText("QTY");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 37, -1));
+        jLabel3.setText("Quantity");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 60, -1));
 
         jLabel4.setText("Tanggal Penerimaan");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 120, -1));
@@ -149,7 +149,7 @@ public class penerimaan extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "No Penerimaan", "Produk", "QTY", "Tanggal Penerimaan"
+                "No Penerimaan", "Produk", "Quantity", "Tanggal Penerimaan"
             }
         ));
         table_produk.setShowGrid(true);
@@ -203,6 +203,7 @@ public class penerimaan extends javax.swing.JFrame {
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/M.Master.png"))); // NOI18N
         jMenu2.setText("Master");
 
         jRadioButtonMenuItem1.setSelected(true);
@@ -216,6 +217,7 @@ public class penerimaan extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/M.persediaan.png"))); // NOI18N
         jMenu3.setText("Persediaan");
 
         jRadioButtonMenuItem2.setSelected(true);
@@ -229,6 +231,7 @@ public class penerimaan extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/penerimaanlog.png"))); // NOI18N
         jMenu4.setText("Penerimaan");
 
         jRadioButtonMenuItem3.setSelected(true);
@@ -242,6 +245,7 @@ public class penerimaan extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/pengirimanlog.png"))); // NOI18N
         jMenu5.setText("Pengiriman");
 
         jRadioButtonMenuItem4.setSelected(true);
@@ -265,7 +269,7 @@ public class penerimaan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
         );
 
         pack();

@@ -60,7 +60,7 @@ public class persediaan extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nama", "Satuan", "Harga", "Qty", "Jumlah Harga"
+                "ID", "Nama", "Satuan", "Harga", "Quantity", "Jumlah Harga"
             }
         ) {
             Class[] types = new Class [] {
@@ -114,6 +114,7 @@ public class persediaan extends javax.swing.JFrame {
         jMenu1.setText("E-logist");
         jMenuBar1.add(jMenu1);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/M.Master.png"))); // NOI18N
         jMenu5.setText("Master");
 
         jRadioButtonMenuItem3.setSelected(true);
@@ -127,6 +128,7 @@ public class persediaan extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/M.persediaan.png"))); // NOI18N
         jMenu2.setText("Persediaan");
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +147,7 @@ public class persediaan extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/penerimaanlog.png"))); // NOI18N
         jMenu3.setText("Penerimaan");
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +166,7 @@ public class persediaan extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/pengirimanlog.png"))); // NOI18N
         jMenu4.setText("Pengiriman");
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
