@@ -115,6 +115,7 @@ public class pengiriman extends javax.swing.JFrame {
         });
         jPanel1.add(TFidproduk, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 204, -1));
 
+        TFqty.setText("-");
         TFqty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFqtyActionPerformed(evt);
@@ -143,7 +144,7 @@ public class pengiriman extends javax.swing.JFrame {
                 BclearActionPerformed(evt);
             }
         });
-        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 90, 30));
+        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 110, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic pengiriman.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));

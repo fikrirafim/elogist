@@ -131,7 +131,7 @@ public class penerimaan extends javax.swing.JFrame {
                 BclearActionPerformed(evt);
             }
         });
-        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 90, -1));
+        jPanel1.add(Bclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 100, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aplikasi_logistik/icon/ic penerimaan.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));

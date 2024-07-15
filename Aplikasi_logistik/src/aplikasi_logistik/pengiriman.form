@@ -203,6 +203,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="TFqty">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="-"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TFqtyActionPerformed"/>
           </Events>
@@ -251,7 +254,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="490" y="280" width="90" height="30"/>
+              <AbsoluteConstraints x="490" y="280" width="110" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
